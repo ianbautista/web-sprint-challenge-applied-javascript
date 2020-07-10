@@ -22,3 +22,61 @@
     <div class="right-button"> > </div>
   </div>
 */
+
+function carousel() {
+	//creating reference for images
+	const imgArray = [
+		"./assets/carousel/mountains.jpeg",
+		"./assets/carousel/computer.jpeg",
+		"./assets/carousel/trees.jpeg",
+		"./assets/carousel/turntable.jpeg",
+	];
+
+	//creating current index
+	let index = 0;
+
+	//creating DOM elements
+	const carouselDiv = document.createElement("div");
+	const leftButton = document.createElement("div");
+	const img = document.createElement("img");
+	const rightButton = document.createElement("div");
+
+	//adding classes
+	carouselDiv.classList.add("carousel");
+	leftButton.classList.add("left-button");
+	rightButton.classList.add("right-button");
+
+	//supply content
+	leftButton.textContent = `<`;
+	img.setAttribute("src", `${imgArray[0]}`);
+	rightButton.textContent = `>`;
+
+	//build structure / append
+	carouselDiv.appendChild(leftButton);
+	carouselDiv.appendChild(img);
+	carouselDiv.appendChild(rightButton);
+
+	//accessing the DOM
+	const carouselContainer = document.querySelector(".carousel-container");
+
+	//appending to the DOM
+	carouselContainer.appendChild(carouselDiv);
+
+	//adding event listener to buttons
+	leftButton.addEventListener("click", () => {
+		if (index < imgArray.length) {
+			index++;
+			img.setAttribute("src", `${imgArray[index]}`);
+		}
+	});
+	rightButton.addEventListener("click", () => {
+		if (index > 0) {
+			index--;
+			img.setAttribute("src", `${imgArray[index]}`);
+		}
+	});
+
+	// return carouselDiv;
+}
+
+carousel();
