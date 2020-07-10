@@ -39,6 +39,11 @@ axios
 		});
 	})
 	.catch((error) => {
+		//error stretch
+		const errorsContainer = document.querySelector(".errors-container");
+		const errorMessage = document.createElement("p");
+		errorMessage.textContent = `${error}`;
+		errorsContainer.appendChild(errorMessage);
 		console.log(error);
 	});
 
