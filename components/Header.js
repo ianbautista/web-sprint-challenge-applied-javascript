@@ -37,4 +37,8 @@ function Header() {
 	const headerContainer = document.querySelector("div.header-container");
 	//appending header to the DOM
 	headerContainer.appendChild(header);
+
+	return header;
 }
+
+Header();
