@@ -24,13 +24,21 @@
 */
 
 function carousel() {
+	//creating reference for images
+	const imgArray = [
+		"./assets/carousel/mountains.jpeg",
+		"./assets/carousel/computer.jpeg",
+		"./assets/carousel/trees.jpeg",
+		"./assets/carousel/turntable.jpeg",
+	];
+
+	//creating current index
+	let index = 0;
+
 	//creating DOM elements
 	const carouselDiv = document.createElement("div");
 	const leftButton = document.createElement("div");
-	const mountainsImg = document.createElement("img");
-	const computerImg = document.createElement("img");
-	const treesImg = document.createElement("img");
-	const turntableImg = document.createElement("img");
+	const img = document.createElement("img");
 	const rightButton = document.createElement("div");
 
 	//adding classes
@@ -40,18 +48,12 @@ function carousel() {
 
 	//supply content
 	leftButton.textContent = `<`;
-	mountainsImg.setAttribute("src", "./assets/carousel/mountains.jpeg");
-	computerImg.setAttribute("src", "./assets/carousel/computer.jpeg");
-	treesImg.setAttribute("src", "./assets/carousel/trees.jpegg");
-	turntableImg.setAttribute("src", "./assets/carousel/turntable.jpeg");
+	img.setAttribute("src", `${imgArray[0]}`);
 	rightButton.textContent = `>`;
 
 	//build structure / append
 	carouselDiv.appendChild(leftButton);
-	carouselDiv.appendChild(mountainsImg);
-	carouselDiv.appendChild(computerImg);
-	carouselDiv.appendChild(treesImg);
-	carouselDiv.appendChild(turntableImg);
+	carouselDiv.appendChild(img);
 	carouselDiv.appendChild(rightButton);
 
 	//accessing the DOM
@@ -61,10 +63,20 @@ function carousel() {
 	carouselContainer.appendChild(carouselDiv);
 
 	//adding event listener to buttons
-	leftButton.addEventListener("click", () => {});
-	rightButton.addEventListener("click", () => {});
+	leftButton.addEventListener("click", () => {
+		if (index < imgArray.length) {
+			index++;
+			img.setAttribute("src", `${imgArray[index]}`);
+		}
+	});
+	rightButton.addEventListener("click", () => {
+		if (index > 0) {
+			index--;
+			img.setAttribute("src", `${imgArray[index]}`);
+		}
+	});
 
-	return carouselDiv;
+	// return carouselDiv;
 }
 
 carousel();
