@@ -116,7 +116,7 @@ axios
 		//error stretch
 		const errorsContainer = document.querySelector(".errors-container");
 		const errorMessage = document.createElement("p");
-		errorMessage.textContent = `${error}`;
+		errorMessage.textContent = `Ooops that's an error. Here's what happened: ${error}`;
 		errorsContainer.appendChild(errorMessage);
 		console.log(error);
 	});
